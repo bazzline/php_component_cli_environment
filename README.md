@@ -4,6 +4,8 @@ This project aims to deliver an free as in freedom, easy to use and lean as in f
 
 This project does not want to be competitive to a big console environment like the once mentioned below in the [link section](#links).
 
+Take a look on [openhub.net](https://www.openhub.net/p/php_component_cli_environment).
+
 # Usage
 
 ## Create Executable Command Line File
@@ -66,15 +68,16 @@ git clone https://github.com/bazzline/php_component_cli_environment .
 
 # API
 
-[API](http://www.bazzline.net/----/index.html) is available at [bazzline.net](http://www.bazzline.net).
+[API](http://www.bazzline.net/b4a1177a56e548d35388d421a8b12a9437a3bf50/index.html) is available at [bazzline.net](http://www.bazzline.net).
 
 
 # History
 
 * upcomming
     * @todo
-        * add link to openhub
         * write tests
+    * add link to openhub
+    * fixed broken [api](#api) link
 * [0.1.0](https://github.com/bazzline/php_component_cli_environment/tree/1.5.0) - released at 10.10.2015
     * initial release
 
