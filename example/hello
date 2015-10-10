@@ -1,0 +1,61 @@
+#!/bin/env php
+<?php
+/**
+ * @author net_bazzline_create_executable_command_line_file
+ * @since 2015-10-10
+ */
+
+//begin of including composer autoload.php
+$possiblePathsToComposerAutoloadFile = array(
+    __DIR__ . '/../../../autoload.php',
+    __DIR__ . '/../../vendor/autoload.php',
+    __DIR__ . '/../vendor/autoload.php'
+);
+$pathToAutoloadFileNotFound = true;
+$pathToAutoloadFile         = null;
+foreach ($possiblePathsToComposerAutoloadFile as $path) {
+    if (file_exists($path)) {
+        $pathToAutoloadFile         = $path;
+        $pathToAutoloadFileNotFound = false;
+        break;
+    }
+}
+if ($pathToAutoloadFileNotFound) {
+    echo 'could not find composer autoload.php, no composer installed?' . PHP_EOL;
+    exit(1);
+}
+
+require_once $pathToAutoloadFile;
+//end of including composer autoload.php
+
+use Net\Bazzline\Component\Cli\Environment\CommandLineEnvironment;
+
+$environment    = new CommandLineEnvironment($argv);
+$usage			= basename(__FILE__) . ' <your name> [-v|--verbose]';
+
+$environment->execute(
+    function (CommandLineEnvironment $environment) {
+        //begin of dependencies
+        $arguments  = $environment->getArguments();
+        $values     = $arguments->getValues();
+        //end of dependencies
+
+        //begin of argument validation
+        $valuesNotAreValid = (count($values) == 0);
+
+        if ($valuesNotAreValid) {
+            throw new InvalidArgumentException(
+                'invalid number of arguments provided'
+            );
+        }
+        //end of argument validation
+
+        //begin of business logic
+        $name = ucfirst($values[0]);
+
+        $environment->outputIfVerbosityIsEnabled('provided values are: ' . implode(' ', $values));
+        $environment->output('Hello ' . $name);
+        //end of business logic
+    },
+    $usage
+);

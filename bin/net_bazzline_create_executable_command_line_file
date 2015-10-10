@@ -1,0 +1,64 @@
+#!/bin/env php
+<?php
+/**
+ * @author stev leibelt <artodeto@bazzline.net>
+ * @since 2015-10-10
+ * @todo implement way of finding path to autoload to remove dependency that
+ *  executable has to lay in predefined paths
+ */
+
+if (!isset($argv[1])) {
+    echo 'Usage: ' . basename(__FILE__) . ' <path to command line executable file>' . PHP_EOL;
+    exit(1);
+}
+
+$filePath = $argv[1];
+
+if (file_exists($filePath)) {
+    echo $filePath . ' exists already' . PHP_EOL;
+    exit(1);
+}
+
+file_put_contents($filePath, '#!/bin/env php
+<?php
+/**
+ * @author ' . basename(__FILE__) . '
+ * @since ' . date('Y-m-d') . '
+ */
+
+//begin of including composer autoload.php
+$possiblePathsToComposerAutoloadFile = array(
+    __DIR__ . \'/../../../autoload.php\',
+    __DIR__ . \'/../../vendor/autoload.php\',
+    __DIR__ . \'/../vendor/autoload.php\'
+);
+$pathToAutoloadFileNotFound = true;
+$pathToAutoloadFile         = null;
+foreach ($possiblePathsToComposerAutoloadFile as $path) {
+    if (file_exists($path)) {
+        $pathToAutoloadFile         = $path;
+        $pathToAutoloadFileNotFound = false;
+        break;
+    }
+}
+if ($pathToAutoloadFileNotFound) {
+    echo \'could not find composer autoload.php, no composer installed?\' . PHP_EOL;
+    exit(1);
+}
+
+require_once $pathToAutoloadFile;
+//end of including composer autoload.php
+
+use Net\Bazzline\Component\Cli\Environment\CommandLineEnvironment;
+
+$environment    = new CommandLineEnvironment($argv);
+$usage			= basename(__FILE__) . \' [-v|--verbose]\';
+
+$environment->execute(
+    function (CommandLineEnvironment $environment) {
+        //put in your business logic
+    },
+    $usage
+);');
+
+chmod($filePath, 0755);
