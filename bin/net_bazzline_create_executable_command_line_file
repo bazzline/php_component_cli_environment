@@ -52,7 +52,7 @@ require_once $pathToAutoloadFile;
 use Net\Bazzline\Component\Cli\Environment\CommandLineEnvironment;
 
 $environment    = new CommandLineEnvironment($argv);
-$usage			= basename(__FILE__) . \' [-v|--verbose]\';
+$usage          = basename(__FILE__) . \' [-v|--verbose]\';
 
 $environment->execute(
     function (CommandLineEnvironment $environment) {

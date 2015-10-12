@@ -1,4 +1,8 @@
+.codelite
 .idea
+.tern-project
+.tern-port
 composer.lock
 example/file/*.csv
+php_component_cli_environment.workspace
 vendor
