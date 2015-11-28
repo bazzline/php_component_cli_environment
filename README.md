@@ -81,6 +81,7 @@ git clone https://github.com/bazzline/php_component_cli_environment .
     * add link to openhub
     * fixed broken [api](#api) link
     * fixed "tab" in usage generation
+    * replaced "//put in your business logic" with "//begin of business logic\n//end of business logic"
 * [0.1.0](https://github.com/bazzline/php_component_cli_environment/tree/1.5.0) - released at 10.10.2015
     * initial release
 

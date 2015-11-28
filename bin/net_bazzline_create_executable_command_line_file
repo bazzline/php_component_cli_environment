@@ -56,7 +56,8 @@ $usage          = basename(__FILE__) . \' [-v|--verbose]\';
 
 $environment->execute(
     function (CommandLineEnvironment $environment) {
-        //put in your business logic
+        //begin of business logic
+        //end of business logic
     },
     $usage
 );');
