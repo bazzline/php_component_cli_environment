@@ -4,6 +4,9 @@ This project aims to deliver an free as in freedom, easy to use and lean as in f
 
 This project does not want to be competitive to a big console environment like the once mentioned below in the [link section](#links).
 
+The versioneye status is:
+[![Dependency Status](https://www.versioneye.com/user/projects/565b5ffe1b08f2000c0000df/badge.svg?style=flat)](https://www.versioneye.com/user/projects/565b5ffe1b08f2000c0000df)
+
 Take a look on [openhub.net](https://www.openhub.net/p/php_component_cli_environment).
 
 # Usage
@@ -79,11 +82,14 @@ git clone https://github.com/bazzline/php_component_cli_environment .
         * add flag to not generate validation section   //version 0.2.0
         * add "containsOneOf($string, $selects)" to Text
         * write tests
-    * add link to openhub
+* [0.1.1](https://github.com/bazzline/php_component_cli_environment/tree/0.1.1) - released at 29.11.2015
+    * added link to openhub
+    * added link to version eye
     * fixed broken [api](#api) link
     * fixed "tab" in usage generation
     * replaced "//put in your business logic" with "//begin of business logic\n//end of business logic"
-* [0.1.0](https://github.com/bazzline/php_component_cli_environment/tree/1.5.0) - released at 10.10.2015
+    * updated dependency
+* [0.1.0](https://github.com/bazzline/php_component_cli_environment/tree/0.1.0) - released at 10.10.2015
     * initial release
 
 # Links
