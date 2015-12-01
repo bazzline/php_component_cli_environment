@@ -82,6 +82,8 @@ git clone https://github.com/bazzline/php_component_cli_environment .
         * add flag to not generate validation section   //version 0.2.0
         * add "containsOneOf($string, $selects)" to Text
         * write tests
+* [0.1.2](https://github.com/bazzline/php_component_cli_environment/tree/0.1.2) - released at 01.12.2015
+    * updated dependency
 * [0.1.1](https://github.com/bazzline/php_component_cli_environment/tree/0.1.1) - released at 29.11.2015
     * added link to openhub
     * added link to version eye
