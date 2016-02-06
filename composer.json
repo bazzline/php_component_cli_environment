@@ -1,7 +1,18 @@
 {
     "name": "net_bazzline/php_component_cli_environment",
     "description": "free as in freedom command line environment for php creating lean command line executable files",
-    "keywords": ["php", "component", "free as in freedom", "lgpl", "lean", "command line", "cli", "console", "environment"],
+    "keywords": [
+        "bazzline",
+        "php",
+        "component",
+        "free as in freedom",
+        "lgpl",
+        "lean",
+        "command line",
+        "cli",
+        "console",
+        "environment"
+    ],
     "type": "library",
     "bin": [
         "bin/net_bazzline_create_executable_command_line_file"
@@ -21,8 +32,8 @@
         }
     ],
     "autoload": {
-        "psr-0": {
-            "Net\\Bazzline\\Component\\Cli\\Environment": "source/"
+        "psr-4": {
+            "Net\\Bazzline\\Component\\Cli\\Environment\\": "source/"
         }
     }
 }
