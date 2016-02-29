@@ -14,7 +14,7 @@ use Net\Bazzline\Component\Toolbox\Scalar\Text;
 class CommandLineEnvironment
 {
     /** @var Arguments */
-	private $arguments;
+    private $arguments;
 
     /** @var bool */
     private $beVerbose;
@@ -23,18 +23,18 @@ class CommandLineEnvironment
     private $executeExceptionHandler;
 
     /** @var Text */
-	private $text;
+    private $text;
 
     /**
      * @param array $argv
      */
-	public function __construct($argv)
-	{
-		$this->arguments    = new Arguments($argv);
+    public function __construct($argv)
+    {
+        $this->arguments    = new Arguments($argv);
         $this->text         = new Text();
         $this->determineIfWeAreVerbose($this->arguments);
         $this->setDefaultExecuteExceptionHandler();
-	}
+    }
 
     /**
      * @return bool
@@ -52,32 +52,32 @@ class CommandLineEnvironment
      * @param string $usage
      * @throws InvalidArgumentException
      */
-	public function execute($instruction, $usage)
-	{
-		try {
+    public function execute($instruction, $usage)
+    {
+        try {
             $this->throwInvalidArgumentExceptionIfNoCallableProvided($instruction);
-			$instruction($this);
-		} catch (Exception $exception) {
+            $instruction($this);
+        } catch (Exception $exception) {
             $handler = $this->executeExceptionHandler;
             $handler($exception, $usage);
-		}
-	}
+        }
+    }
 
     /**
      * @return Arguments
      */
-	public function getArguments()
-	{
-		return $this->arguments;
-	}
+    public function getArguments()
+    {
+        return $this->arguments;
+    }
 
     /**
      * @return Text
      */
-	public function getText()
-	{
-		return $this->text;
-	}
+    public function getText()
+    {
+        return $this->text;
+    }
 
     /**
      * Handler is called with arguments:
@@ -97,11 +97,11 @@ class CommandLineEnvironment
      * @param int|float|string|array $scalarOrArrayOfScalars
      * @throws InvalidArgumentException
      */
-	public function output($scalarOrArrayOfScalars)
-	{
-		if (is_scalar($scalarOrArrayOfScalars)) {
-			$scalarOrArrayOfScalars = array($scalarOrArrayOfScalars);
-		}
+    public function output($scalarOrArrayOfScalars)
+    {
+        if (is_scalar($scalarOrArrayOfScalars)) {
+            $scalarOrArrayOfScalars = array($scalarOrArrayOfScalars);
+        }
 
         if (!is_array($scalarOrArrayOfScalars)) {
             throw new InvalidArgumentException(
@@ -110,17 +110,17 @@ class CommandLineEnvironment
         }
 
         echo implode(PHP_EOL, $scalarOrArrayOfScalars) . PHP_EOL;
-	}
+    }
 
     /**
      * @param int|float|string|array $scalarOrArrayOfScalars
      */
-	public function outputIfVerbosityIsEnabled($scalarOrArrayOfScalars)
-	{
-		if ($this->beVerbose) {
-			$this->output($scalarOrArrayOfScalars);
-		}
-	}
+    public function outputIfVerbosityIsEnabled($scalarOrArrayOfScalars)
+    {
+        if ($this->beVerbose) {
+            $this->output($scalarOrArrayOfScalars);
+        }
+    }
 
     /**
      * @param Arguments $arguments
@@ -134,15 +134,15 @@ class CommandLineEnvironment
     {
         $environment                    = $this;
         $this->executeExceptionHandler  = function (Exception $exception, $usage) use ($environment) {
-			$environment->output(
+            $environment->output(
                 array(
                     'An error occurred',
                     $exception->getMessage(),
                     '',
                     'Usage: ' . $usage
-			    )
+		)
             );
-			exit(1);
+            exit(1);
         };
     }
 
