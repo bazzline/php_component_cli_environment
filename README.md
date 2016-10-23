@@ -83,6 +83,8 @@ git clone https://github.com/bazzline/php_component_cli_environment .
         * add "containsOneOf($string, $selects)" to Text
         * write tests
     * moved to psr-4 autoloading
+* [0.1.3](https://github.com/bazzline/php_component_cli_environment/tree/0.1.3) - released at 23.10.2016
+    * relaced dependencies
 * [0.1.2](https://github.com/bazzline/php_component_cli_environment/tree/0.1.2) - released at 01.12.2015
     * updated dependency
 * [0.1.1](https://github.com/bazzline/php_component_cli_environment/tree/0.1.1) - released at 29.11.2015
