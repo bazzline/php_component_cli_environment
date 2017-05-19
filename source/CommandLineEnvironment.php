@@ -100,7 +100,9 @@ class CommandLineEnvironment
     public function output($scalarOrArrayOfScalars)
     {
         if (is_scalar($scalarOrArrayOfScalars)) {
-            $scalarOrArrayOfScalars = array($scalarOrArrayOfScalars);
+            $scalarOrArrayOfScalars = [
+                $scalarOrArrayOfScalars
+            ];
         }
 
         if (!is_array($scalarOrArrayOfScalars)) {
@@ -135,12 +137,12 @@ class CommandLineEnvironment
         $environment                    = $this;
         $this->executeExceptionHandler  = function (Exception $exception, $usage) use ($environment) {
             $environment->output(
-                array(
+                [
                     'An error occurred',
                     $exception->getMessage(),
                     '',
                     'Usage: ' . $usage
-		)
+                ]
             );
             exit(1);
         };
