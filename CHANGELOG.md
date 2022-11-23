@@ -25,6 +25,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 * fixed wording in the released section by s/To Add/Added and s/To Change/Changed
 
+## [0.3.0](https://github.com/bazzline/php_component_cli_environment/tree/0.3.0) - released at 2022-11-23
+
+### Changed
+
+* Updated requirements
+* Updated code base to php 8.0
+
 ## [0.2.0](https://github.com/bazzline/php_component_cli_environment/tree/0.2.0) - released at 2017-05-20
 
 ### Changed

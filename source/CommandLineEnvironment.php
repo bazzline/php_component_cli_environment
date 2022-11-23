@@ -13,22 +13,13 @@ use Net\Bazzline\Component\Toolbox\Scalar\Text;
 
 class CommandLineEnvironment
 {
-    /** @var Arguments */
-    private $arguments;
-
-    /** @var bool */
-    private $beVerbose;
-
+    private Arguments $arguments;
+    private bool $beVerbose;
     /** @var Callable */
     private $executeExceptionHandler;
+    private Text $text;
 
-    /** @var Text */
-    private $text;
-
-    /**
-     * @param array $argv
-     */
-    public function __construct($argv)
+    public function __construct(array $argv)
     {
         $this->arguments    = new Arguments($argv);
         $this->text         = new Text();
@@ -36,10 +27,7 @@ class CommandLineEnvironment
         $this->setDefaultExecuteExceptionHandler();
     }
 
-    /**
-     * @return bool
-     */
-    public function beVerbose()
+    public function beVerbose(): bool
     {
         return $this->beVerbose;
     }
@@ -52,7 +40,7 @@ class CommandLineEnvironment
      * @param string $usage
      * @throws InvalidArgumentException
      */
-    public function execute($instruction, $usage)
+    public function execute(callable $instruction, string $usage): void
     {
         try {
             $this->throwInvalidArgumentExceptionIfNoCallableProvided($instruction);
@@ -63,18 +51,12 @@ class CommandLineEnvironment
         }
     }
 
-    /**
-     * @return Arguments
-     */
-    public function getArguments()
+    public function getArguments(): Arguments
     {
         return $this->arguments;
     }
 
-    /**
-     * @return Text
-     */
-    public function getText()
+    public function getText(): Text
     {
         return $this->text;
     }
@@ -87,17 +69,13 @@ class CommandLineEnvironment
      * @param callable $handler
      * @throws InvalidArgumentException
      */
-    public function overwriteDefaultExecuteExceptionHandler($handler)
+    public function overwriteDefaultExecuteExceptionHandler(callable $handler): void
     {
         $this->throwInvalidArgumentExceptionIfNoCallableProvided($handler);
         $this->executeExceptionHandler = $handler;
     }
 
-    /**
-     * @param int|float|string|array $scalarOrArrayOfScalars
-     * @throws InvalidArgumentException
-     */
-    public function output($scalarOrArrayOfScalars)
+    public function output(float|array|int|string $scalarOrArrayOfScalars): void
     {
         if (is_scalar($scalarOrArrayOfScalars)) {
             $scalarOrArrayOfScalars = [
@@ -114,25 +92,19 @@ class CommandLineEnvironment
         echo implode(PHP_EOL, $scalarOrArrayOfScalars) . PHP_EOL;
     }
 
-    /**
-     * @param int|float|string|array $scalarOrArrayOfScalars
-     */
-    public function outputIfVerbosityIsEnabled($scalarOrArrayOfScalars)
+    public function outputIfVerbosityIsEnabled(float|array|int|string $scalarOrArrayOfScalars): void
     {
         if ($this->beVerbose) {
             $this->output($scalarOrArrayOfScalars);
         }
     }
 
-    /**
-     * @param Arguments $arguments
-     */
-    private function determineIfWeAreVerbose(Arguments $arguments)
+    private function determineIfWeAreVerbose(Arguments $arguments): void
     {
         $this->beVerbose = ($arguments->hasFlag('verbose') || $arguments->hasFlag('v'));
     }
 
-    private function setDefaultExecuteExceptionHandler()
+    private function setDefaultExecuteExceptionHandler(): void
     {
         $environment                    = $this;
         $this->executeExceptionHandler  = function (Exception $exception, $usage) use ($environment) {
@@ -152,7 +124,7 @@ class CommandLineEnvironment
      * @param Callable $callable
      * @throws InvalidArgumentException
      */
-    private function throwInvalidArgumentExceptionIfNoCallableProvided($callable)
+    private function throwInvalidArgumentExceptionIfNoCallableProvided(callable $callable): void
     {
         if (!is_callable($callable)) {
             throw new InvalidArgumentException(

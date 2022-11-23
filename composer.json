@@ -18,9 +18,9 @@
         "bin/net_bazzline_create_executable_command_line_file"
     ],
     "require": {
-        "net_bazzline/php_component_cli_arguments": "1.4.*",
+        "net_bazzline/php_component_cli_arguments": "2.1.*",
         "net_bazzline/php_component_toolbox": ">=1.5",
-        "php": ">=5.3.3"
+        "php": ">=8.0"
     },
     "license": "LGPLv3",
     "authors": [
