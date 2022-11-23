@@ -19,7 +19,7 @@
     ],
     "require": {
         "net_bazzline/php_component_cli_arguments": "2.1.*",
-        "net_bazzline/php_component_toolbox": ">=1.5",
+        "net_bazzline/php_component_toolbox": ">=1.10",
         "php": ">=8.0"
     },
     "license": "LGPLv3",
