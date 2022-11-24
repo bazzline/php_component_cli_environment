@@ -22,7 +22,7 @@
         "net_bazzline/php_component_toolbox": ">=1.10",
         "php": ">=8.0"
     },
-    "license": "LGPLv3",
+    "license": "LGPL-3.0-or-later",
     "authors": [
         {
             "name": "Stev Leibelt",
